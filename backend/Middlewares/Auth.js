@@ -1,4 +1,5 @@
-const {z} =  require("zod");
+const {z, boolean} =  require("zod");
+const { user } = require("../DB");
 
 const SignUpSchema = z.object({
     UserName: z.string(),
@@ -11,6 +12,21 @@ const SignInSchema = z.object({
     Password: z.string()
 })
 
+async function isThere(req,res,next){
+
+
+    await user.findOne({UserName: req.body.UserName}).then((doc) => {
+        
+        if(doc != null){
+            res.status(400).json({msg: "User already exists"});
+        }else{
+            next();
+        }
+    })
+
+
+}
+
 function SignUpAuth(req,res,next){
 
     const isCorrect = SignUpSchema.safeParse({
@@ -19,10 +35,10 @@ function SignUpAuth(req,res,next){
         Password: req.body.Password
     })
 
-    
-
     if(isCorrect.success){
-        next();
+       
+         next();
+
     }else{
         res.status(401).json({msg: "Invalid Inputs"})
     }
@@ -48,4 +64,4 @@ function SignInAuth(req,res,next){
 
 
 
-module.exports = {SignUpAuth, SignInAuth};
+module.exports = {SignUpAuth, SignInAuth, isThere};
