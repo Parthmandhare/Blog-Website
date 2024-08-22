@@ -30,7 +30,14 @@ const postsSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"
-    }
+    },
+    comments: [{
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "user"
+        },
+        comment: String
+    }]
 });
 
 const posts = new model("Posts", postsSchema);
