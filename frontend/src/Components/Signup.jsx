@@ -14,6 +14,7 @@ const Signup = () => {
 
             <div className='flex flex-col gap-5 w-full p-10 justify-center items-center'>
               <input type="text" placeholder='Username' className= 'md:w-1/2 px-5 py-3 h-10 rounded-lg bg-gray-200 w-full' />
+              <input type="email" placeholder='Email' className= 'md:w-1/2 px-5 py-3 h-10 rounded-lg bg-gray-200 w-full' />
               <input type="password" placeholder='Password' className= 'md:w-1/2 px-5 py-3 h-10 rounded-lg bg-gray-200 w-full' />
 
               <button className='bg-purple-600 text-white px-5 py-2  rounded-3xl text-md w-1/2 h-3/2 hover:bg-purple-500 font-bold'>Sign Up</button>
@@ -32,7 +33,7 @@ const Signup = () => {
             Join our vibrant community of bloggers, writers, and thinkers. Share your ideas, connect with like-minded individuals, and make your voice heard. Signing up is quick and easy!
             </div>
 
-            <button className=' border-white border-2 text-white px-5 py-2 rounded-3xl text-md w-1/2 hover:bg-purple-500 font-bold'>Sign Up</button>
+            <button className=' border-white border-2 text-white px-5 py-2 rounded-3xl text-md w-1/2 hover:bg-purple-500 font-bold'>Sign In</button>
           </div>
 
         </div>
