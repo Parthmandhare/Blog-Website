@@ -12,6 +12,8 @@ route.post("/", SignUpAuth, isThere, async(req, res) => {
         Password: req.body.Password
     }
 
+
+
     user.create(data).then(() => {
         res.send("User is created")
     }).catch((e) => {
