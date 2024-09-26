@@ -33,13 +33,19 @@ route.post("/", isThere, async(req, res) => {
     await posts.create(data).then(async(doc) => {
 
         await user.findOneAndUpdate({UserName: req.UserName},  {$push: {posts: doc._id}}).then((doc) => {
-            res.send("Create Post")
+            res.status(200).json({
+                msg: "Post is created successfully"
+            })
         }).catch((e) => {
-            res.send("Something went wrong pls try again! " + e)
+            res.status(502).json({
+                msg: "Something went wrong"
+            })
         })
     
     }).catch((e) => {
-        res.send("Something went wrong pls try again!" + e)
+        res.status(502).json({
+            msg: "Something went wrong while creating post"
+        })
     })
 
     

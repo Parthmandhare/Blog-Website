@@ -7,10 +7,12 @@ async function isThere(req,res,next){
         UserName: req.body.UserName,
         Password: req.body.Password
     }
+    
 
-    let token = req.headers.authorization;
+    let token = req.cookies.cookie;
 
-    token = token.split(" ")[1];
+    // console.log(token);
+    
     
 
     try{

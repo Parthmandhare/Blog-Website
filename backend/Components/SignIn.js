@@ -7,7 +7,7 @@ require("dotenv").config();
 
 const route = Router();
 
-route.get("/", SignInAuth, async(req, res) => {
+route.post("/", SignInAuth, async(req, res) => {
 
     await user.findOne({UserName: req.body.UserName}).then(async (doc) => {
         
@@ -22,8 +22,13 @@ route.get("/", SignInAuth, async(req, res) => {
                 }
 
                 const token = jwt.sign(data, process.env.PASSWORD);
+
+                res.cookie("cookie" , token)
                 
-                res.send("Logged In! " + token)
+                res.status(200).json({
+                    msg: "User is logged",
+                    token: token
+                })
             }else{
                 res.status(401).json({msg: "Incorrect Password!"})
             }

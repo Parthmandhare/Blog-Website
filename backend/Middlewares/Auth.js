@@ -29,6 +29,7 @@ async function isThere(req,res,next){
 
 function SignUpAuth(req,res,next){
 
+
     const isCorrect = SignUpSchema.safeParse({
         UserName: req.body.UserName,
         Email: req.body.Email,
@@ -47,6 +48,9 @@ function SignUpAuth(req,res,next){
 
 function SignInAuth(req,res,next){
 
+
+    
+    
     const isCorrect = SignInSchema.safeParse({
         UserName: req.body.UserName,
         Password: req.body.Password

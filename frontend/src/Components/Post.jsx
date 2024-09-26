@@ -1,13 +1,44 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const Post = () => {
+const Post = ({id}) => {
+
+
+  const[post, setPost] = useState({
+    title: "",
+    desc: "",
+    userName: "",
+    date: ""
+  })
+
+  useEffect(() => {
+
+    myPost();
+
+  }, [id])
+
+  const myPost = async() => {
+    await axios.get(`http://localhost:5000/posts/${id}`).then(async(res) => {
+      await axios.get(`http://localhost:5000/user/${res.data.user}`).then((Puser) => {
+        setPost({
+          title: res.data.title,
+          desc: res.data.desc,
+          userName: Puser.data.user.UserName,
+          // date: res.data.date
+        });
+        
+      })
+    }).catch((err) => {
+      console.log(err);
+    })
+    
+  }
+
   return (
     <>
       <div className="flex flex-col gap-5 md:w-1/2 m-10">
         <div className="flex justify-start font-extrabold text-2xl font-serif">
-          Why Can’t Robots Click The “I’m Not a Robot” Box On Websites? Lorem
-          ipsum, dolor sit amet consectetur adipisicing elit. Molestiae,
-          explicabo.
+         {post.title}
         </div>
 
         <div className="flex gap-2 justify-start">
@@ -29,7 +60,7 @@ const Post = () => {
           </div>
 
           <div className="flex flex-col text-sm font-serif">
-            <div>Parth Mandhare</div>
+            <div>{post.userName}</div>
             <div>April 12,2024</div>
           </div>
         </div>
@@ -50,17 +81,7 @@ const Post = () => {
         </div>
         <div>
             <div className="leading-8 tracking-wider">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae provident unde dignissimos ratione! Eum sed maiores illum officia placeat iure qui rem si
-                nt, delectus inventore, recusandae voluptatum totam, dicta culpa ullam eveniet quis architecto? Illum molestias unde odit ipsam quis corrupti illo praesentium nulla provident possimus quos natus quod labore porro tenetur ea ratione accusamus, 
-                laborum itaque, id sunt magnam quas nisi? Error in, consequuntur a ratione sequi quae ipsa eos veritatis nesciunt quas quia quos fugit iusto facilis voluptatibus. Similique possimus exercitationem quos tempora, placeat voluptatibus dolores nobis temporibus magnam nostrum vitae qui cumque odio, ad amet suscipit quam itaque sequi eaque quasi minus. Quos, quo maiores sunt iste asperiores eligendi nam accusantium voluptatum dignissimos aut, quas expedita sint recusandae perspiciatis, facere fugiat odit cum do
-                loremque suscipit unde quis
-                ! Cumque error laborum praesentium repellat, neque distinctio aut odit cum quas? Doloremque, pariatur. Nesciunt vero esse rem deserunt perspiciatis! Voluptate?
-                <br />
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab hic magnam doloremque inventore. Repudiandae, tenetur fugiat nam odio dolorem possimus ad cum quas architecto voluptate deserunt, eos dolorum distinctio exercitationem voluptates, earum aliquam sunt asperiores quod dicta? Molestiae aliquid repudiandae inventore, vel corporis voluptates, quibusdam eius distinctio dolore, reiciendis rerum.
-
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut, cupiditate commodi officia adipisci explicabo nesciunt voluptas voluptates numquam itaque eveniet odit quae assumenda corporis blanditiis quis voluptate pariatur. Voluptatem fugiat, iste error ducimus, in corporis quam cumque consequatur dolores id nisi libero. Explicabo incidunt ipsam quis ullam nihil nam amet, inventore reicien
-
-                dis exercitationem neque, expedita ratione facere aliquam odit, laborum illum tempora vel iste totam voluptatibus vitae ex fugiat enim? Id sint earum similique officia nam velit dolor a enim sequi dolorum aperiam, exercitationem veritatis! Nihil consequatur labore similique ipsam, qui quasi blanditiis optio accusantium voluptates nulla quaerat voluptatum magni.
+            {post.desc}
             </div>
         </div>
       </div>

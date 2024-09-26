@@ -1,6 +1,44 @@
-import React from "react";
+import React, { useState } from 'react'
+import axios from "axios"
+import {useNavigate} from "react-router-dom"
 
 const Signin = () => {
+  const navigate = useNavigate();
+
+  const[userData, setUserData] = useState({
+    UserName: "",
+    Password: ""
+  });
+
+  const[errMsg, setErrMsg] = useState("");
+
+  const signIn = async(e) => {
+
+    e.preventDefault();    
+
+    await axios({
+      method: 'post',
+      url: 'http://localhost:5000/SignIn',
+      data: {
+        UserName: userData.UserName,
+        Password: userData.Password
+      },
+      withCredentials: true
+    }).then((res) => {
+      navigate("/userDashboard")
+      // console.log(res);
+      
+    }).catch((err) => {
+        if(err.response){
+          setErrMsg(err.response.data);
+          console.log(err.response.status);
+        }else{
+          console.log(err);
+        }
+    })
+
+  }
+
   return (
     <>
       <div className=" min-h-screen w-full grid gird-rows-2 text-center md:grid md:grid-cols-2">
@@ -28,16 +66,25 @@ const Signin = () => {
               type="text"
               placeholder="Username"
               className="md:w-1/2 px-5 py-3 h-10 rounded-lg bg-gray-200 w-full"
+              value={setUserData.UserName} 
+              onChange={(e) => {setUserData({...userData, UserName: e.target.value})}}
             />
             <input
               type="password"
               placeholder="Password"
               className="md:w-1/2 px-5 py-3 h-10 rounded-lg bg-gray-200 w-full"
+              value={setUserData.Password} 
+              onChange={(e) => {setUserData({...userData, Password: e.target.value})}}
             />
 
-            <button className="bg-purple-600 text-white px-5 py-2  rounded-3xl text-md w-1/2 h-3/2 hover:bg-purple-500 font-bold">
+            <button className="bg-purple-600 text-white px-5 py-2  rounded-3xl text-md w-1/2 h-3/2 hover:bg-purple-500 font-bold"
+            onClick={signIn}>
               Sign In
             </button>
+
+            {errMsg && (
+              <p className='text-red-600 font-bold'>{errMsg.msg}</p>
+            )}
 
             <p className="font-bold text-lg md:text-sm">
               Don't have account?{" "}

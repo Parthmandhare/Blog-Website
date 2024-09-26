@@ -16,9 +16,9 @@ function App() {
           <Route path="/" Component={Home}/>
           <Route path="/signup" Component={Signup}/>
           <Route path="/signin" Component={Signin}/>
-          <Route path="/DetailedPost" Component={DetailedPost}/>
+          <Route path="/DetailedPost/:id" Component={DetailedPost}/>
           <Route path="/createPost" Component={CreatePost}/>
-          <Route path="/updatePost" Component={UpdatePost}/>
+          <Route path="/updatePost/:id" Component={UpdatePost}/>
           <Route path="/userDashboard" Component={UserDashboard}/>
         </Routes>
      </BrowserRouter>
