@@ -14,7 +14,7 @@ const Navbar = () => {
   }, []);
 
   const isThere = async() => {
-    await axios.get("http://localhost:5000" ,{
+    await axios.get("https://blog-website-backend-rnpv.onrender.com" ,{
       withCredentials: true
     }).then((res) => {
       console.log(res);
@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
   const logout = async() => {
-    await axios.get("http://localhost:5000/logout", {
+    await axios.get("https://blog-website-backend-rnpv.onrender.com/logout", {
       withCredentials: true
     }).then((res) => {
       navigate("/")

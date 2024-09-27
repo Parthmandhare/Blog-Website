@@ -12,7 +12,7 @@ const Home = () => {
   }, [])
 
   const getAllPost = async() => {
-    await axios.get("http://localhost:5000/posts").then((res) => {setPosts(res.data);
+    await axios.get("https://blog-website-backend-rnpv.onrender.com/posts").then((res) => {setPosts(res.data);
     
     }).catch((e) => {console.log("err is: " + e);
     })

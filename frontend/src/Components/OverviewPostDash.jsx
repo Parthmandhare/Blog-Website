@@ -31,7 +31,7 @@ const OverviewPostDash = ({ id, userName }) => {
 
   const getPost = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/posts/${id}`);
+      const res = await axios.get(`https://blog-website-backend-rnpv.onrender.com/posts/${id}`);
       setMyPost({
         ...myPost,
         title: res.data.title,
@@ -46,7 +46,7 @@ const OverviewPostDash = ({ id, userName }) => {
   };
 
   const deletePost = async () => {
-    await axios.delete(`http://localhost:5000/posts/${id}`, {
+    await axios.delete(`https://blog-website-backend-rnpv.onrender.com/posts/${id}`, {
       withCredentials: true
       
     }).then((res) => {

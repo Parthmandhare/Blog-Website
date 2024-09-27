@@ -15,7 +15,7 @@ const CreatePost = () => {
   const onSubmit = async(e) => {
     e.preventDefault();
    
-    await axios.post("http://localhost:5000/posts", newPost, {
+    await axios.post("https://blog-website-backend-rnpv.onrender.com/posts", newPost, {
       withCredentials: true
       
     }).then((res) => {

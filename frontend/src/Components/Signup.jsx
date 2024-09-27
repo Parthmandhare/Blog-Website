@@ -17,7 +17,7 @@ const Signup = () => {
   const createUser = async(e) => {
     e.preventDefault();
 
-    await axios.post("http://localhost:5000/SignUp", {
+    await axios.post("https://blog-website-backend-rnpv.onrender.com/SignUp", {
       
         UserName: userData.UserName,
         Email: userData.Email,

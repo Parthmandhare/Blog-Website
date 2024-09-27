@@ -27,7 +27,7 @@ const OverviewPost = ({ post }) => {
   },[post.user])
 
   const getUser = async() => {
-    axios.get(`http://localhost:5000/user/${post.user}`).then((res) => {console.log(res.data.user); setUser(res.data.user)
+    axios.get(`https://blog-website-backend-rnpv.onrender.com/user/${post.user}`).then((res) => {console.log(res.data.user); setUser(res.data.user)
     }).catch((e) => {console.log(e);
     })
   }

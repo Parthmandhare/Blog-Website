@@ -15,7 +15,7 @@ const UserDashboard = () => {
   }, [])
 
   const getUser = async() => {
-    await axios.get("http://localhost:5000/user/dashboard", {
+    await axios.get("https://blog-website-backend-rnpv.onrender.com/user/dashboard", {
       withCredentials: true
     }).then((res) => {
       setUserName(res.data.user.UserName);

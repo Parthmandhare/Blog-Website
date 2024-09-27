@@ -17,7 +17,7 @@ const UpdatePost = () => {
   // Function to fetch the post data
   const getMyPost = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/posts/${id}`);
+      const res = await axios.get(`https://blog-website-backend-rnpv.onrender.com/posts/${id}`);
       setMyPost(res.data); // Update the state with the fetched data
     } catch (e) {
       console.log(e);
@@ -37,7 +37,7 @@ const UpdatePost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(`http://localhost:5000/posts/${id}`, myPost, {
+      const res = await axios.put(`https://blog-website-backend-rnpv.onrender.com/posts/${id}`, myPost, {
         withCredentials: true
         
       });

@@ -18,8 +18,8 @@ const Post = ({id}) => {
   }, [id])
 
   const myPost = async() => {
-    await axios.get(`http://localhost:5000/posts/${id}`).then(async(res) => {
-      await axios.get(`http://localhost:5000/user/${res.data.user}`).then((Puser) => {
+    await axios.get(`https://blog-website-backend-rnpv.onrender.com/posts/${id}`).then(async(res) => {
+      await axios.get(`https://blog-website-backend-rnpv.onrender.com/user/${res.data.user}`).then((Puser) => {
         setPost({
           title: res.data.title,
           desc: res.data.desc,
