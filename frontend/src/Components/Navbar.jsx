@@ -65,6 +65,7 @@ const Navbar = () => {
               <input type="search" name="" id="" placeholder='Search Blogs Here...' className='hidden md:block bg-gray-100 text-sm' />
             </div>
 
+
            {
             userThere && (
               <div className='hidden md:inline-flex flex gap-1 items-center cursor-pointer' onClick={() => {navigate("/createPost")}}>
@@ -85,10 +86,12 @@ const Navbar = () => {
               userThere ?  <ul className="p-2">
               <li className="p-2 hover:bg-gray-100 cursor-pointer" onClick={() => navigate(`/userDashboard`)}>Dashboard</li>
               <li className="p-2 hover:bg-gray-100 cursor-pointer" onClick={() => logout()}>Logout</li>
+              <li className="p-2 hover:bg-gray-100 cursor-pointer" ><a href="https://portfolio-two-flame-71.vercel.app/">About me</a></li>
             </ul> : <ul className="p-2">
               {/* <li className="p-2 hover:bg-gray-100 cursor-pointer" onClick={() => navigate(`/userDashboard`)}>Dashboard</li> */}
               <li className="p-2 hover:bg-gray-100 cursor-pointer" onClick={() => navigate(`/signin`)}>Login</li>
               <li className="p-2 hover:bg-gray-100 cursor-pointer" onClick={() => navigate(`/signup`)}>Sign Up</li>
+              <li className="p-2 hover:bg-gray-100 cursor-pointer" ><a href="https://portfolio-two-flame-71.vercel.app/">About me</a></li>
               {/* <li className="p-2 hover:bg-gray-100 cursor-pointer" onClick={() => logout()}>Logout</li> */}
             </ul>
             }

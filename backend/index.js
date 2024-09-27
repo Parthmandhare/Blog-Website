@@ -9,6 +9,8 @@ const cookieParser = require("cookie-parser");
 
 const app = express();
 
+const PORT = process.env.PORT || 5000;
+
 app.use(cors({
     credentials: true,
     origin: "http://localhost:3000"
@@ -24,4 +26,4 @@ app.use("/SignIn", SignIn);
 app.use("/posts", Post);
 app.use("/user", User);
 
-app.listen(5000);
+app.listen(PORT);
