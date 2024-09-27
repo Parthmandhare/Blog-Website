@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors({
     credentials: true,
-    origin: "http://localhost:3000"
+    origin: "https://blog-website-frontend-yhrr.onrender.com/"
 }))
 
 app.use(express.json())
